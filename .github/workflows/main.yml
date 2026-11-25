@@ -3,7 +3,7 @@ name: Update Legistar data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 12 * * *'
       timezone: 'America/New_York'
 
 permissions:
@@ -39,7 +39,7 @@ jobs:
 
       - name: Update legislative items
         if: always()
-        working-directory: code/organizing_data
+        working-directory: code
         env:
           LEGISTAR_KEY: ${{ secrets.LEGISTAR_KEY }}
         run: Rscript update_legistar_legislative_items.R
